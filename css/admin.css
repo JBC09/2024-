@@ -1,0 +1,10 @@
+#busModal {
+    display: none;
+}
+
+table button.red {
+    border: none;
+    background-color: transparent;
+    color: #ff6700;
+    text-decoration: underline;
+}

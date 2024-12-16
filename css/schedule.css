@@ -1,0 +1,82 @@
+#culturalEvent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+#culturalEvent table {
+    width: 100%;
+    margin-top: 30px;
+}
+
+#culturalEvent table h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+#culturalEvent table th {
+    text-align: center;
+    flex:1;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 50px;
+    font-weight: 100;
+    
+}
+
+#culturalEvent tr {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+}
+
+#culturalEvent table td {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 10px;
+    flex: 1;
+    border-top: 2px solid black;
+    vertical-align: top;
+    height: 200px;
+    transition: 0.35s;
+}
+
+#culturalEvent table td:hover {
+    background-color: aliceblue;
+}
+
+#culturalEvent #calendar #calNav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#culturalEvent #calendar #calNav h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 100;
+    font-size: 35px;
+}
+
+#culturalEvent table td div {
+    width: 100%;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#culturalEvent table td img {
+    border-radius: 5px;
+    width: 100%;
+}
+
+#culturalEvent .sun {
+    color: #FF6700;
+    border-color: #FF6700;
+}
+
+#culturalEvent .sat {
+    border-color: dodgerblue;
+    color: dodgerblue;
+}

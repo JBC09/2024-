@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경상북도 문화 관광 워드클라우드</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #wordcloud {
+            width: 600px;
+            height: 600px;
+            position: relative;
+            background-color: #f0f0f0;
+        }
+        .keyword {
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.3s;
+            transform: translate(-50%, -50%);
+        }
+        .popup {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            display: none;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="wordcloud"></div>
+
+    <script>
+        // 키워드 데이터 (실제로는 JSON 파일에서 불러와야 합니다)
+        const keywords = [
+            { text: "경주", frequency: 1000 },
+            { text: "안동", frequency: 800 },
+            { text: "포항", frequency: 700 },
+            { text: "문경", frequency: 600 },
+            { text: "영주", frequency: 500 },
+            { text: "울릉도", frequency: 400 },
+            { text: "독도", frequency: 350 },
+            { text: "경천대", frequency: 300 },
+            { text: "불국사", frequency: 250 },
+            { text: "영덕", frequency: 200 }
+        ];
+
+        const wordcloud = document.getElementById('wordcloud');
+
+        // 키워드 정렬 및 크기 계산
+        keywords.sort((a, b) => b.frequency - a.frequency);
+        const maxFrequency = keywords[0].frequency;
+        const minFontSize = 24;
+
+        function calculateFontSize(frequency) {
+            return Math.max(64 - (maxFrequency - frequency) / 20, minFontSize);
+        }
+
+        function getRandomColor() {
+            return `hsl(${Math.random() * 360}, 70%, 50%)`;
+        }
+
+        function checkOverlap(elem1, elem2) {
+            const rect1 = elem1.getBoundingClientRect();
+            const rect2 = elem2.getBoundingClientRect();
+            return !(rect1.right < rect2.left || 
+                     rect1.left > rect2.right || 
+                     rect1.bottom < rect2.top || 
+                     rect1.top > rect2.bottom);
+        }
+
+        function placeKeyword(keyword, index) {
+            const keywordElem = document.createElement('div');
+            keywordElem.className = 'keyword';
+            keywordElem.textContent = keyword.text;
+            keywordElem.style.fontSize = `${calculateFontSize(keyword.frequency)}px`;
+            keywordElem.style.color = getRandomColor();
+
+            const popup = document.createElement('div');
+            popup.className = 'popup';
+            popup.textContent = `검색 빈도: ${keyword.frequency}`;
+            keywordElem.appendChild(popup);
+
+            wordcloud.appendChild(keywordElem);
+
+            const angle = (index / keywords.length) * 2 * Math.PI;
+            const maxRadius = 200; // 최대 반지름을 줄여 더 중앙에 집중
+            const radius = maxRadius * (1 - index / keywords.length);
+            let left = 300 + radius * Math.cos(angle);
+            let top = 300 + radius * Math.sin(angle);
+
+            // 겹침 방지
+            let attempts = 0;
+            while (attempts < 50) {
+                let overlapping = false;
+                for (let i = 0; i < index; i++) {
+                    if (checkOverlap(keywordElem, wordcloud.children[i])) {
+                        overlapping = true;
+                        break;
+                    }
+                }
+                if (!overlapping) break;
+                
+                left += Math.random() * 20 - 10;
+                top += Math.random() * 20 - 10;
+                attempts++;
+            }
+
+            keywordElem.style.left = `${left}px`;
+            keywordElem.style.top = `${top}px`;
+
+            // 마우스 이벤트
+            keywordElem.addEventListener('mouseover', () => {
+                popup.style.display = 'block';
+            });
+            keywordElem.addEventListener('mouseout', () => {
+                popup.style.display = 'none';
+            });
+        }
+
+        keywords.forEach((keyword, index) => {
+            placeKeyword(keyword, index);
+        });
+    </script>
+</body>
+</html>

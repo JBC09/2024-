@@ -1,0 +1,19 @@
+.search-area {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+}
+
+.search-area input {
+    width: 400px;
+}
+
+#appModal {
+    display: none;
+}
+
+table td {
+    height: 20px;
+    padding: 2px;
+}

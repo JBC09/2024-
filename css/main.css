@@ -1,0 +1,1190 @@
+#visual {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes ani1 {
+    0%{
+        transform: translate(calc(-100% / 6 * 0));
+    }    
+    30%{
+        transform: translate(calc(-100% / 6 * 0));
+    }
+
+
+    33%{
+        transform: translate(calc(-100% / 6 * 1));
+    }    
+    63%{
+        transform: translate(calc(-100% / 6 * 1));
+    }
+
+    66%{
+        transform: translate(calc(-100% / 6 * 2));
+    }    
+    96%{
+        transform: translate(calc(-100% / 6 * 2));
+    }
+
+    100% {
+        transform: translate(calc(-100% / 6 * 3));
+    }
+}
+
+#visual #content {
+    transform: translateY(-50%);
+    left: 300px;
+    top: 50%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    width: 50%;
+}
+
+#visual .btnSmall {
+    width: 120px;
+}
+
+#visual #content p {
+    font-weight: bold;
+}
+
+#visual #content h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 85px;
+    font-weight: 100;
+}
+
+/* 비주얼 탭부분 */
+
+
+@keyframes rota {
+    0%{
+        transform: rotateX(0deg);
+    }    
+    30%{
+        transform: rotateX(0deg);
+    }
+
+
+    33%{
+        transform: rotateX(120deg);
+    }    
+    63%{
+        transform: rotateX(120deg);
+    }
+
+    66%{
+        transform: rotateX(240deg);
+    }    
+    96%{
+        transform: rotateX(240deg);
+    }
+
+    100% {
+        transform: rotateX(360deg);
+    }
+}
+
+#tabs {
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    height: 50px;
+    transition: 3s;
+    animation: rota 10s infinite;
+}
+
+#tabs div {
+    backface-visibility: hidden; /* 뒷면 숨김 */
+    position: absolute;
+    height: 30px;
+    line-height: 30px;
+    padding: 5px;
+    transform:translateZ(10px);
+    color: black;
+    border-radius: 5px;
+}
+
+#tabs div:nth-of-type(2) {
+    transform: rotateX(-120deg) translateZ(10px);
+}
+
+#tabs div:nth-of-type(3) {
+    transform: rotateX(120deg) translateZ(10px);
+}
+
+
+
+
+#slideWrap {
+    width: 600%;
+    height: 820px;
+    transition: 0.35s;
+    display: flex;
+    animation: ani1 10s infinite;
+}
+
+#visual input {
+    display: none;
+}
+
+#slideWrap div {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: calc(100% / 6);
+    height: 100%;
+    background-image: url('../images/visual1.png');
+}
+
+#slideWrap div.two {
+    background-image: url('../images/visual2.png');
+}
+
+#slideWrap div.three {
+    background-image: url('../images/visual3.png');
+}
+
+#slideBtnWrap {
+    width: 50px;
+    height: 50px;
+    z-index: 100;
+    height: 100px;
+    position: absolute;
+    bottom: 17%;
+    left: 300px;
+}
+
+
+
+#slideBtnWrap > label {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 50%;
+    color: #FF6700;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    border: 4px solid #FF6700;
+}
+
+#play:checked ~ #slideWrap {
+    animation-play-state: running;
+}
+
+
+#stop:checked ~ #slideWrap {
+    animation-play-state: paused;
+}
+
+#stop:checked ~ #slideBtnWrap label:nth-of-type(1) {
+    display: none;
+}
+
+#play:checked ~ #slideBtnWrap label:nth-of-type(2) {
+    display: none;
+}
+
+
+#slideBtnWrap div:hover {
+    cursor: pointer;
+}
+
+/* 경북투어가이드 */
+#tourGuide {
+    width: 1320px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#tourGuide #imgWrap h1 {
+    font-size: 21px;
+    margin-bottom: 20px;
+    
+    text-align: center;
+}
+
+#tourGuide p {
+    font-size: 12px;
+    z-index: 100;
+}
+
+#tourGuide .title {
+    z-index: 100;
+}
+
+#tourGuide:hover #black {
+    display: none;
+}
+
+#tourGuide #imgWrap {
+    
+    width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+
+#tourGuide #imgWrap > div {
+    height: 200px;
+    box-sizing: border-box;
+}
+
+
+#tourGuide #imgWrap div#black {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    left: 0%;
+    top: 100px;
+    padding: 20px;
+    transition: 0.35s;
+    background-color: rgb(0, 0, 0, 0.5);
+    border: none;
+    pointer-events: none;
+    z-index: 10;
+    display: none;
+    mix-blend-mode: hard-light;
+}
+
+#tourGuide #imgWrap div#black div {
+    display: none;
+    color: white;
+}
+
+
+#imgWrap .ab div {
+    height: 100px;
+}
+
+#imgWrap div#topTrans {
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    height: 100px;
+    top: -100px;
+    display: flex;
+    background-color: white;
+    z-index: 11;
+}
+
+
+#imgWrap:has(#top1:hover) #black {
+    top: -100px;
+    left: 0%;
+    width: 20%;
+    height: 0%;
+    display: block;
+}
+
+#imgWrap:has(#top2:hover) #black {
+    top: -100px;
+    left: 20%;
+    width: 30%;
+    height: 0%;
+    display: block;
+}
+
+#imgWrap:has(#top3:hover) #black {
+    top: -100px;
+    left: 50%;
+    width: 25%;
+    height: 0%;
+    display: block;
+}
+
+#imgWrap:has(#top4:hover) #black {
+    top: -100px;
+    left: 75%;
+    width: 25%;
+    height: 0%;
+    display: block;
+}
+
+
+#tourGuide #topTrans #top1 {
+    width: 20%;
+}
+
+#tourGuide #topTrans #top2 {
+    width: 30%;
+}
+
+#tourGuide #topTrans #top3 {
+    width: 25%;
+}
+
+#tourGuide #topTrans #top4 {
+    width: 25%;
+}
+
+
+#imgWrap div#bottomTrans {
+    left: 0%;
+    bottom: -100px;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    z-index: 11;
+    background-color: white;
+}
+
+#tourGuide #bottomTrans #bottom1 {
+    width: 55%;
+}
+
+#tourGuide #bottomTrans #bottom2 {
+    width: 45%;
+}
+
+#imgWrap:has(#bottom1:hover) #black {
+    top: 600px;
+    height: 0%;
+    left: 0%;
+    width: 55%;
+    display: block;
+}
+
+#imgWrap:has(#bottom2:hover) #black {
+    top: 600px;
+    left: 55%;
+    height: 0%;
+    width: 45%;
+    display: block;
+}
+
+
+#imgWrap div#leftTrans {
+    left: -100px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    top: 0%;
+    position: absolute;
+    background-color: white;
+    z-index: 11;
+}
+
+#tourGuide #leftTrans #left1 {
+    width: 100px;
+    height: 200px;
+}
+
+#tourGuide #leftTrans #left2 {
+    width: 100px;
+    height: 200px;
+}
+
+#tourGuide #leftTrans #left3 {
+    width: 100px;
+    height: 200px;
+}
+
+
+#imgWrap:has(#left1:hover) #black {
+    top: 0px;
+    left: -100px;
+    width: 0%;
+    display: block;
+}
+
+#imgWrap:has(#left2:hover) #black {
+    top: 200px;
+    left: -100px;
+    width: 0%;
+    display: block;
+}
+
+
+#imgWrap:has(#left3:hover) #black {
+    top: 400px;
+    left: -100px;
+    width: 0%;
+    display: block;
+}
+
+
+
+#imgWrap:has(#bottom1:hover) #black {
+    top: 600px;
+    left: 0%;
+    width: 55%;
+    display: block;
+}
+
+
+#imgWrap div#rightTrans {
+    right: -100px;
+    display: flex;
+    flex-direction: column;
+    top: 0%;
+    position: absolute;
+    height: 100%;
+    background-color: white;
+    z-index: 11;
+}
+
+#tourGuide #rightTrans #right1 {
+    width: 100px;
+    height: 200px;
+}
+
+#tourGuide #rightTrans #right2 {
+    width: 100px;
+    height: 200px;
+}
+
+#tourGuide #rightTrans #right3 {
+    width: 100px;
+    height: 200px;
+}
+
+
+#imgWrap:has(#right1:hover) #black {
+    top: 0px;
+    left: calc(100% + 100px);
+    width: 0%;
+    display: block;
+}
+
+#imgWrap:has(#right2:hover) #black {
+    top: 200px;
+    left: calc(100% + 100px);
+    width: 0%;
+    display: block;
+}
+
+
+#imgWrap:has(#right3:hover) #black {
+    top: 400px;
+    left: calc(100% + 100px);
+    width: 0%;
+    display: block;
+}
+
+
+
+#imgWrap .row {
+    height: 20px;
+}
+
+
+
+#imgWrap:has(#t1:hover) div#black {
+    left: 0%;
+    top: 0%;
+    width: 20%;
+    display: block;
+}
+
+#imgWrap:has(#t1:hover) div#black div:nth-of-type(1) {
+    display: block;
+}
+
+
+#imgWrap:has(#t2:hover) div#black {
+    left: 20%;
+    top: 0%;
+    width: 30%;
+    display: block;
+}
+
+#imgWrap:has(#t2:hover) div#black div:nth-of-type(2) {
+    display: block;
+}
+
+#imgWrap:has(#t3:hover) div#black {
+    left: 50%;
+    top: 0%;
+    width: 25%;
+    display: block;
+}
+
+#imgWrap:has(#t3:hover) div#black div:nth-of-type(3) {
+    display: block;
+}
+
+#imgWrap:has(#t4:hover) div#black {
+    left: 75%;
+    top: 0%;
+    width: 25%;
+    display: block;
+}
+
+#imgWrap:has(#t4:hover) div#black div:nth-of-type(4) {
+    display: block;
+}
+
+#imgWrap:has(#t5:hover) div#black {
+    left: 0%;
+    width: 30%;
+    top: 200px;
+    display: block;
+}
+
+#imgWrap:has(#t5:hover) div#black div:nth-of-type(5) {
+    display: block;
+}
+
+#imgWrap:has(#t6:hover) div#black {
+    left: 30%;
+    width: 40%;
+    top: 200px;
+    display: block;
+}
+
+#imgWrap:has(#t6:hover) div#black div:nth-of-type(6) {
+    display: block;
+}
+
+#imgWrap:has(#t7:hover) div#black {
+    left: 70%;
+    width: 30%;
+    top: 200px;
+    display: block;
+}
+
+#imgWrap:has(#t7:hover) div#black div:nth-of-type(7) {
+    display: block;
+}
+
+#imgWrap:has(#t8:hover) div#black {
+    left: 0%;
+    width: 55%;
+    top: 400px;
+    display: block;
+}
+
+#imgWrap:has(#t8:hover) div#black div:nth-of-type(8) {
+    display: block;
+}
+
+#imgWrap:has(#t9:hover) div#black {
+    left: 55%;
+    width: 45%;
+    top: 400px;
+    display: block;
+}
+
+#imgWrap:has(#t9:hover) div#black div:nth-of-type(9) {
+    display: block;
+}
+
+
+
+
+#tourGuide #imgWrap #t1 {
+    width: 20%;
+    background-image: url('../images/경북투어가이드/가야산만물상설경_성주.jpg');
+}
+
+
+
+#tourGuide #imgWrap #t2 {
+    width: 30%;
+    background-image: url('../images/경북투어가이드/가을양동마을_경주.jpg');
+}
+
+
+#tourGuide #imgWrap #t3 {
+    width: 25%;
+    background-image: url('../images/경북투어가이드/감물염색_청도.jpg');
+}
+
+
+#tourGuide #imgWrap #t4 {
+    width: 25%;
+    background-image: url('../images/경북투어가이드/감은사지_경주.jpg');
+}
+
+#tourGuide #imgWrap #t5 {
+    width: 30%;
+    background-image: url('../images/경북투어가이드/경정해변_영덕.jpg');
+}
+
+#tourGuide #imgWrap #t6 {
+    width: 40%;
+    background-image: url('../images/경북투어가이드/고추따는날.jpg');
+}
+
+#tourGuide #imgWrap #t7 {
+    width: 30%;
+    background-image: url('../images/경북투어가이드/두들마을일몰_영양.jpg');
+}
+
+#tourGuide #imgWrap #t8 {
+    width: 55%;
+    background-image: url('../images/경북투어가이드/맥문동\ 소나무\ 숲길.jpg');
+}
+
+#tourGuide #imgWrap #t9 {
+    width: 45%;
+    background-image: url('../images/경북투어가이드/가야산만물상설경_성주.jpg');
+}
+
+
+
+
+/* 켤쳐문화영역 */
+#culturalEvent {
+    width: 1320px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#culturalEvent .sun {
+    color: #FF6700;
+    border-color: #FF6700;
+}
+
+#culturalEvent .sat {
+    border-color: dodgerblue;
+    color: dodgerblue;
+}
+
+#culturalEvent h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 100;
+}
+
+#culturalEvent table {
+    width: 100%;
+    margin-top: 30px;
+}
+
+#culturalEvent table h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+#culturalEvent table th {
+    text-align: left;
+    flex:1;
+    height: 70px;
+}
+
+#culturalEvent tr {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+}
+
+#culturalEvent table td {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 10px;
+    flex: 1;
+    border-top: 2px solid black;
+    vertical-align: top;
+    height: 200px;
+}
+
+#culturalEvent table td div {
+    width: 100%;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#culturalEvent table td img {
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* 정 4면체 */
+
+#gallery {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 1320px;
+}
+
+#glWrap {
+    width: 100%;
+    display: flex;
+    align-items: start;
+
+}
+
+#gallery3d {
+    margin-top: 60px;
+    width: 50%;
+    display: flex;
+
+}
+
+#gallery3d #flex {
+    display: flex;
+    gap: 30px;
+}
+
+.tetrahedron {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 1s;
+}
+
+.tetrahedron:hover {
+    transform: rotateY(-270deg);
+}
+
+.tetrahedron div {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+}
+
+.tetrahedron .face1 {
+    background-image: url('../images/갤러리/01_스페이스워크/01_스페이스워크.jpg');
+
+    transform: rotateY(0deg) translateZ(100px);
+}
+
+.tetrahedron .face2 {
+    background-image: url('../images/갤러리/01_스페이스워크/02_스페이스워크.jpg');
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.tetrahedron .face3 {
+    background-image: url('../images/갤러리/01_스페이스워크/03_스페이스워크.jpg');
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.tetrahedron .face4 {
+    color: white;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #FF6700;
+    transform: rotateY(270deg) translateZ(100px);
+}
+
+.tetrahedron .face4 h1 {
+    font-size: 20px;
+}
+
+.tetrahedron:nth-of-type(2) .face1 {
+    background-image: url('../images/갤러리/02_은어다리/01_은어다리.jpg');
+}
+
+.tetrahedron:nth-of-type(2) .face2 {
+    background-image: url('../images/갤러리/02_은어다리/02_은어다리.jpg');
+}
+
+.tetrahedron:nth-of-type(2) .face3 {
+    background-image: url('../images/갤러리/02_은어다리/03_은어다리.jpg');
+}
+
+.tetrahedron:nth-of-type(3) .face1 {
+    background-image: url('../images/갤러리/03_연화지/01_연화지.jpg');
+}
+
+.tetrahedron:nth-of-type(3) .face2 {
+    background-image: url('../images/갤러리/03_연화지/02_연화지.jpg');
+}
+
+.tetrahedron:nth-of-type(3) .face3 {
+    background-image: url('../images/갤러리/03_연화지/03_연화지.jpg');
+}
+
+
+
+
+
+
+/* expend부분 */
+#expend {
+    width: 50%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+}
+
+#expend input {
+    display: none;
+}
+
+#expend #imgWrap {  
+    width: 500px;
+    height: 500px;
+    gap: 10px;
+    transition: 0.35s;
+    position: relative;
+}
+
+#expend #change:checked + #imgWrap div {
+    width: 150px;
+    height: 150px;
+}
+
+
+#expend #imgWrap div {  
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transition: 0.35s;
+    left: 50%;
+    top: 50%;
+    background-position: center;
+    background-size: cover;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+}
+
+
+
+#expend #checkbox {
+    transform: translate(-50%, -40%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    border: 1px solid black;
+    height: 120px;
+    border-radius: 50%;
+    z-index: 1000;
+    transition: 1s;
+}
+
+#expend #checkbox div {
+    width: 2px;
+    height: 0px;
+    position: absolute;
+    background-color: black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) rotate(-45deg);
+    transition: 1s;
+}
+
+#expend #checkbox div:nth-of-type(2) {
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+
+#expend:has(#change:checked) #checkbox {
+    top: 105%;
+    transform: translate(-50%,-40%) rotate(90deg);
+}
+
+#expend:has(#change:checked) #checkbox div {
+    height: 50px;
+}
+
+
+#expend #imgWrap div::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    background-color: black;
+    transition: 0.35s;
+}
+
+#expend #change:checked + #imgWrap div::before {
+    background-color: transparent;
+}
+
+
+#expend  #imgWrap div:nth-of-type(1) {
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+    transition-delay: 0.1s;
+    background-image: url('../images/갤러리/expend/01.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(2) {
+    top: calc(50% - 25px);
+    transition-delay: 0.2s;
+    background-image: url('../images/갤러리/expend/02.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(3) {
+    left: calc(50% + 25px);
+    top: calc(50% - 25px);
+    transition-delay: 0.3s;
+    background-image: url('../images/갤러리/expend/03.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(4) {
+    left: calc(50% - 25px);
+    transition-delay: 0.4s;
+    background-image: url('../images/갤러리/expend/04.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(5) {
+    left: calc(50%);
+    transition-delay: 0.5s;
+    background-image: url('../images/갤러리/expend/05.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(6) {
+    left: calc(50% + 25px);
+    transition-delay: 0.6s;
+    background-image: url('../images/갤러리/expend/06.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(7) {
+    left: calc(50% - 25px);
+    top: calc(50% + 25px);
+    transition-delay: 0.7s;
+    background-image: url('../images/갤러리/expend/07.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(8) {
+    top: calc(50% + 25px);
+    transition-delay: 0.8s;
+    background-image: url('../images/갤러리/expend/08.jpg');
+}
+
+#expend  #imgWrap div:nth-of-type(9) {
+    left: calc(50% + 25px);
+    top: calc(50% + 25px);
+    transition-delay: 0.9s;
+    background-image: url('../images/갤러리/expend/09.jpg');
+}
+
+
+#expend #change:checked + #imgWrap div:nth-of-type(1) {
+    left: 0%;
+    top: 0%;
+    transform: translateX(0%);
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(2) {
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(3) {
+
+    left: 100%;
+    top: 0%;
+    transform: translateX(-100%);
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(4) {
+    left: 0%;
+    transform: translateX(0%) translateY(-50%);
+    top: 50%;
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(5) {
+    left: 50%;
+
+    top: 50%;
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(6) {
+    left: 100%;
+    transform: translateX(-100%) translateY(-50%);
+    top: 50%;
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(7) {
+    left: 0%;
+    top: 100%;
+    transform: translateY(-100%);
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(8) {
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%) translateY(-100%);
+}
+
+#expend #change:checked + #imgWrap div:nth-of-type(9) {
+    left: 100%;
+    top: 100%;
+
+    transform: translateX(-100%) translateY(-100%);
+}
+
+
+
+@property --num {
+    syntax: "<integer>";
+    initial-value: 10;
+    inherits: true;
+}
+
+@property --t1 {
+    syntax: "<integer>";
+    initial-value: 10;
+    inherits: true;
+}
+
+@property --t2 {
+    syntax: "<integer>";
+    initial-value: 10;
+    inherits: true;
+}
+
+@property --t3 {
+    syntax: "<integer>";
+    initial-value: 10;
+    inherits: true;
+}
+
+@property --t4 {
+    syntax: "<integer>";
+    initial-value: 10;
+    inherits: true;
+}
+
+@property --t5 {
+    syntax: "<integer>";
+    initial-value: 10;
+    inherits: true;
+}
+
+
+
+@keyframes scrolls {
+    0% {
+        --num: 0;
+        --t1: 300;
+    }
+    20% {
+        --t1: 400;
+        --t2: 300;
+    }
+    30% {
+        --t1: 300;
+        --t2: 400;
+        --t3: 300;
+    }
+    40% {
+        --t2: 300;
+        --t3: 400;
+        --t4: 300;
+    }
+    50% {
+        --t3: 300;
+        --t4: 400;
+    }
+    60% {
+        --t3: 300;
+        --t4: 400;
+        --t5: 300;
+    }
+    100% {
+        --t4: 300;
+        --t5: 400;
+        --num: 1400;
+    }
+
+}
+
+/* 문화축제 영역 */
+#culturalFestival {
+    width: 1320px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+#scrollWrap::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+#scrollWrap {
+    
+    border-radius: 30px;
+    width: 100%;
+    background: linear-gradient(135deg, #FF6700, #ffa200);
+    height: 500px;
+    z-index: 10;
+    overflow: auto;
+    animation: scrolls forwards;
+    animation-timeline: scroll(self);
+
+    z-index: 100;
+}
+
+#maxHeight {
+    height: 4000px;
+}
+
+#rowData {
+    pointer-events: none;
+    position: absolute; 
+    display: flex;
+    height: 500px;
+    align-items: center;
+    gap: 40px;
+    z-index: 0;
+    transform: translateX(calc(var(--num) * -1px));
+}
+
+#rowData img {
+    border-radius: 10px;
+    width: 240px;
+    height: 300px;
+    min-height: 300px;
+    max-height: 400px;
+    box-shadow: 0px 0px 30px 0px rgb(0, 0, 0, 0.5);
+}
+
+#rowData img:nth-of-type(3) {
+    height: calc(400px - (var(--num) * 1px));
+}
+
+#rowData img:nth-of-type(4) {
+    height: calc(var(--t1) * 1px);
+}
+
+#rowData img:nth-of-type(5) {
+    height: calc(var(--t2) * 1px);
+}
+
+#rowData img:nth-of-type(6) {
+    height: calc(var(--t3) * 1px);
+}
+
+#rowData img:nth-of-type(7) {
+    height: calc(var(--t4) * 1px);
+}
+
+#rowData img:nth-of-type(8) {
+    height: calc(var(--t5) * 1px);
+}
+
+
+
+
+
+
+
